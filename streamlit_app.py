@@ -58,4 +58,3 @@ def main():
     st.image(image_predicted)
 
 main()
-main()
