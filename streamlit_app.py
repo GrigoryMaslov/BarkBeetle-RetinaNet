@@ -37,22 +37,26 @@ def get_transform():
 transforms = get_transform()
 
 def main():
+  execute_recsys=False
   img = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
   st.image(img)
-  img_transformed = transforms(img)
-  damage_detection_model.eval()
-  with torch.no_grad():
-    preds = damage_detection_model(img_transformed.unsqueeze(0))
-  labels = ['Damage!' for pred in preds[0]['labels']]
-  damage = preds[0]['labels']
-  bboxes = preds[0]['boxes']
-  result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
-  img_buf = io.BytesIO()
-  result.savefig(img_buf, format='png')
-  image_predicted = Image.open(img_buf)
-  st.markdown("# Prediction: ")
-  st.image(image_predicted)
+  execute_recsys = st.button("Give me recommendations!")
+  if session_state.execute_recsys:
+    img_transformed = transforms(img)
+    damage_detection_model.eval()
+    with torch.no_grad():
+      preds = damage_detection_model(img_transformed.unsqueeze(0))
+    labels = ['Damage!' for pred in preds[0]['labels']]
+    damage = preds[0]['labels']
+    bboxes = preds[0]['boxes']
+    result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
+    img_buf = io.BytesIO()
+    result.savefig(img_buf, format='png')
+    image_predicted = Image.open(img_buf)
+    st.markdown("# Prediction: ")
+    st.image(image_predicted)
+    execute_recsys=False
 
 while True:
   main()
