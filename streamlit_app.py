@@ -41,7 +41,7 @@ def main():
   img = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
   st.image(img)
-  execute_recsys = st.button("Detect bark beetle!")
+  execute = st.button("Detect bark beetle!")
   if execute:
     img_transformed = transforms(img)
     damage_detection_model.eval()
