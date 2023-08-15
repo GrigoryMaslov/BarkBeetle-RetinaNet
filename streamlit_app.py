@@ -42,7 +42,7 @@ def main():
   st.markdown("# Initial image: ")
   st.image(img)
   execute_recsys = st.button("Give me recommendations!")
-  if session_state.execute_recsys:
+  if execute_recsys:
     img_transformed = transforms(img)
     damage_detection_model.eval()
     with torch.no_grad():
