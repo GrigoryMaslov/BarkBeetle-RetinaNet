@@ -41,7 +41,7 @@ def main():
   img = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
   st.image(img)
-  score_threshold = st.slider('Choose the score threshold for the object detection model: ', min_value=0, max_value=1, value=0.15, step=0.05)
+  score_threshold = st.slider('Choose the score threshold for the object detection model: ', min_value=0.0, max_value=1.0, value=0.15, step=0.05)
   execute = st.button("Detect bark beetle!")
   if execute:
     img_transformed = transforms(img)
