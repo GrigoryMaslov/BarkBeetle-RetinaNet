@@ -36,7 +36,7 @@ def get_transform():
 transforms = get_transform()
 
 def main():
-  image = Image.open("sample_image.jpg")
+  image = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
   st.image(image)
   img_transformed = transforms(image)
@@ -50,4 +50,5 @@ def main():
   st.markdown("# Prediction: ")
   st.image(result)
 
-main()
+while True:
+  main()
