@@ -46,7 +46,7 @@ def main():
   labels = ['Damage!' for pred in preds[0]['labels']]
   damage = preds[0]['labels']
   bboxes = preds[0]['boxes']
-  result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
+  result = plot_bboxes(img=image, bboxes=bboxes,labels=labels, damage=damage)
   st.markdown("# Prediction: ")
   st.image(result)
 
