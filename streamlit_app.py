@@ -37,12 +37,12 @@ def get_transform():
 transforms = get_transform()
 
 def main():
-  execute_recsys=False
+  execute=False
   img = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
   st.image(img)
   execute_recsys = st.button("Detect bark beetle!")
-  if execute_recsys:
+  if execute:
     img_transformed = transforms(img)
     damage_detection_model.eval()
     with torch.no_grad():
@@ -56,7 +56,7 @@ def main():
     image_predicted = Image.open(img_buf)
     st.markdown("# Prediction: ")
     st.image(image_predicted)
-    execute_recsys=False
+  break
 
 while True:
   main()
