@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import patches
 
 import numpy as np
+import io
 
 from PIL import Image
 import torch
@@ -47,8 +48,11 @@ def main():
   damage = preds[0]['labels']
   bboxes = preds[0]['boxes']
   result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
+  img_buf = io.BytesIO()
+  result.savefig(img_buf, format='png')
+  image_predicted = Image.open(img_buf)
   st.markdown("# Prediction: ")
-  st.image(result)
+  st.image(image_predicted)
 
 while True:
   main()
