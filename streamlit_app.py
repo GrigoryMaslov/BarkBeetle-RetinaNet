@@ -11,6 +11,7 @@ import torchvision as tv
 from torchvision import transforms as T
 
 from funcs import plot_bboxes
+import streamlit as st
 
 url = 'https://github.com/GrigoryMaslov/BarkBeetle-RetinaNet/releases/download/v1.0.0/RetinaNetDD_40'
 filename = url.split('/')[-1]
