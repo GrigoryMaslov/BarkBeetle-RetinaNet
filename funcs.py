@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+from matplotlib import patches
+import numpy as np
+
 def plot_bboxes(img, bboxes, damage, labels):
 
         fig = plt.figure()
