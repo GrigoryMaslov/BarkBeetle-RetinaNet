@@ -27,9 +27,27 @@ damage_detection_model = tv.models.detection.retinanet_resnet50_fpn_v2(
 
 damage_detection_model.load_state_dict(torch.load('RetinaNetDD_40', map_location=torch.device('cpu') ))
 
+def get_transform():
+    transforms = []
+    transforms.append(T.PILToTensor())
+    transforms.append(T.ConvertImageDtype(torch.float32))
+    return T.Compose(transforms)
+
+transforms = get_transform()
+
 def main():
   image = Image.open("sample_image.jpg")
+  st.markdown("# Initial image: ")
   st.image(image)
-  st.markdown("# All done!")
+  img_transformed = transforms(image)
+  damage_detection_model.eval()
+  with torch.no_grad():
+    preds = damage_detection_model(img_transformed.unsqueeze(0))
+  labels = ['Damage!' for pred in preds[0]['labels']]
+  damage = preds[0]['labels']
+  bboxes = preds[0]['boxes']
+  result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
+  st.markdown("# Prediction: ")
+  st.image(result)
 
 main()
