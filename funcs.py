@@ -1,8 +1,4 @@
-
-def plot_bboxes(img,
-    bboxes: List[List[float]],
-    damage: List[str],
-    labels: Optional[List[str]] = None) -> None:
+def plot_bboxes(img, bboxes, damage, labels):
 
         fig = plt.figure()
         ax = fig.add_axes([0, 0, 1, 1])
