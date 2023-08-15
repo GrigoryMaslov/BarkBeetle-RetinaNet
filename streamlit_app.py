@@ -36,17 +36,17 @@ def get_transform():
 transforms = get_transform()
 
 def main():
-  image = Image.open("sample_image.jpg").convert("RGB")
+  img = Image.open("sample_image.jpg").convert("RGB")
   st.markdown("# Initial image: ")
-  st.image(image)
-  img_transformed = transforms(image)
+  st.image(img)
+  img_transformed = transforms(img)
   damage_detection_model.eval()
   with torch.no_grad():
     preds = damage_detection_model(img_transformed.unsqueeze(0))
   labels = ['Damage!' for pred in preds[0]['labels']]
   damage = preds[0]['labels']
   bboxes = preds[0]['boxes']
-  result = plot_bboxes(img=image, bboxes=bboxes,labels=labels, damage=damage)
+  result = plot_bboxes(img=img, bboxes=bboxes,labels=labels, damage=damage)
   st.markdown("# Prediction: ")
   st.image(result)
 
