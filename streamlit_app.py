@@ -56,7 +56,5 @@ def main():
     image_predicted = Image.open(img_buf)
     st.markdown("# Prediction: ")
     st.image(image_predicted)
-  break
 
-while True:
-  main()
+main()
