@@ -1,7 +1,7 @@
 numpy==1.23.5
 Pillow==9.5.0
 torch==2.0.0
-matplotlib==3.7.2
 plotly==5.15.0
+matplotlib==3.7.2
 torchvision
 streamlit
