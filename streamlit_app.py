@@ -39,7 +39,8 @@ def main():
   st.markdown("# Bark beetle damage detection")
   st.markdown("## With RetinaNet")
   st.markdown('This page showcases the RetinaNet model for bark beetle detection that was trained on the [Spruce Bark Beetle dataset](http://https://arxiv.org/abs/1708.02002) by Swedish Forest Agency.')
-  st.markdown('RetinaNet uses the Focal loss function $FL = -(1-P_t)^\gamma ln(P_t)$ to address class imbalance. It helped us train a decent model on a very limited data. Try it yourself!')
+  st.markdown('RetinaNet uses the Focal loss function $FL = -(1-P_t)^\gamma ln(P_t)$ to address class imbalance. It helped us train a decent model on a very limited data.')
+  st.markdown('The model can detect damaged trees on both vertical and oblique images. Try it yourself!')
   
   retrieve_image = {'Backsjon, Sweden': 'images/backsjon_vertical.jpg',
                    'Lidhem, Sweden': 'images/lidhem_oblique.jpg',
