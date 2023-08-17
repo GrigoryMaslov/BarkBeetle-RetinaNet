@@ -1,5 +1,4 @@
 import urllib.request 
-from typing import List, Optional
 import matplotlib.pyplot as plt
 from matplotlib import patches
 
@@ -37,11 +36,24 @@ def get_transform():
 transforms = get_transform()
 
 def main():
-  execute=False
-  img = Image.open("sample_image.jpg").convert("RGB")
-  st.markdown("# Initial image: ")
+  st.markdown("# Bark beetle damage detection")
+  st.markdown("## With RetinaNet")
+  
+  retrieve_image = {'Backsjon, Sweden': 'images/backsjon_vertical.jpg',
+                   'Lidhem, Sweden': 'images/lidhem_oblique.jpg',
+                   'Just some illustrative image from the Internet': 'images/sample_image.jpg'}
+  
+  keys = list(retrieve_image.keys())
+  
+  option = st.selectbox(
+    'Where are we going to look for bark beetle?',
+    (keys[0], keys[1], keys[2]))
+  
+  img = Image.open(retrieve_image[option]).convert("RGB")
   st.image(img)
+  
   score_threshold = st.slider('Choose the score threshold for the object detection model: ', min_value=0.0, max_value=1.0, value=0.15, step=0.05)
+  execute=False
   execute = st.button("Detect bark beetle!")
   if execute:
     img_transformed = transforms(img)
