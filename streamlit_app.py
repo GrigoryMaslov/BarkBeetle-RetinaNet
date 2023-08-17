@@ -38,6 +38,7 @@ transforms = get_transform()
 def main():
   st.markdown("# Bark beetle damage detection")
   st.markdown("## With RetinaNet")
+  st.markdown("This page showcases the model for bark beetle detection. RetinaNet uses [$FL = -(1-P_t)^\gamma ln(P_t)$]")
   
   retrieve_image = {'Backsjon, Sweden': 'images/backsjon_vertical.jpg',
                    'Lidhem, Sweden': 'images/lidhem_oblique.jpg',
