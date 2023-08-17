@@ -74,6 +74,6 @@ def main():
     st.markdown("# Prediction: ")
     st.image(image_predicted)
 
-    st.markdown('## Visit my Kaggle notebook to learn more about the model, experiments, and more. The model is available as a Github release: <a href='https://github.com/GrigoryMaslov/BarkBeetle-RetinaNet/releases/tag/v1.0.0' > <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/600px-Octicons-mark-github.svg.png' width='20' height='20' > </a>')
+    st.markdown("## Visit my [Kaggle notebook](https://www.kaggle.com/code/grzegorzmpelov/spruce-damage-detection-ap-0-673-w-iou-0-50) to learn more about the model, experiments, and more. The model is available as a Github release: <a href='https://github.com/GrigoryMaslov/BarkBeetle-RetinaNet/releases/tag/v1.0.0' > <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/600px-Octicons-mark-github.svg.png' width='20' height='20' > </a>")
 
 main()
