@@ -38,7 +38,8 @@ transforms = get_transform()
 def main():
   st.markdown("# Bark beetle damage detection")
   st.markdown("## With RetinaNet")
-  st.markdown("This page showcases the model for bark beetle detection. RetinaNet uses [$FL = -(1-P_t)^\gamma ln(P_t)$]")
+  st.markdown("This page showcases the RetinaNet model for bark beetle detection that was trained on the [Spruce Bark Beetle dataset](http://https://arxiv.org/abs/1708.02002) by Swedish Forest Agency.')
+  st.markdown('RetinaNet uses the Focal loss function $FL = -(1-P_t)^\gamma ln(P_t)$ to address class imbalance. It helped us train a decent model on a very limited data. Try it yourself!")
   
   retrieve_image = {'Backsjon, Sweden': 'images/backsjon_vertical.jpg',
                    'Lidhem, Sweden': 'images/lidhem_oblique.jpg',
@@ -52,8 +53,9 @@ def main():
   
   img = Image.open(retrieve_image[option]).convert("RGB")
   st.image(img)
-  
-  score_threshold = st.slider('Choose the score threshold for the object detection model: ', min_value=0.0, max_value=1.0, value=0.15, step=0.05)
+
+  st.markdown('Our model achieved .673 mAP on validation data with 0.15 default score threshold, but you can try different values!')
+  score_threshold = st.slider('Select the score threshold for the object detection model: ', min_value=0.0, max_value=1.0, value=0.15, step=0.05)
   execute=False
   execute = st.button("Detect bark beetle!")
   if execute:
@@ -71,5 +73,7 @@ def main():
     image_predicted = Image.open(img_buf)
     st.markdown("# Prediction: ")
     st.image(image_predicted)
+
+    st.markdown('# For experiments')
 
 main()
